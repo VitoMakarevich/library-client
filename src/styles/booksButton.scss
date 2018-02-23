@@ -1,0 +1,9 @@
+@import './base/_placeholders.scss';
+
+.menu__books-button {
+    @extend %menu-button;
+}
+
+.menu__link {
+    @extend %menu-link;
+}

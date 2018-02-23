@@ -1,0 +1,10 @@
+@import './base/_placeholders.scss';
+
+.menu__users-button {
+    @extend %menu-button;
+    border-radius: .3rem 0rem 0rem .3rem;
+}
+
+.menu__link {
+    @extend %menu-link;
+}

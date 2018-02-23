@@ -1,0 +1,9 @@
+.selector{ 
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    &__menu {
+        padding: 0;
+    }
+}

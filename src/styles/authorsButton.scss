@@ -1,0 +1,10 @@
+@import './base/_placeholders.scss';
+
+.menu__authors-button {
+    @extend %menu-button;
+}
+
+.menu__link {
+    @extend %menu-link;
+    padding: .5rem;
+}
