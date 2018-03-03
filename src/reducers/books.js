@@ -2,19 +2,23 @@ import {BookActions} from '../actions';
 
 function books(state = {
     isFetching: false,
-    books: []
+    books: {}
   }, action) {
     switch (action.type) {
-
       case BookActions.REQUEST_BOOKS:
         return Object.assign({}, state, {
           isFetching: true,
         })
       case BookActions.RECEIVE_BOOKS:
+        const books = {};
+        action.books.forEach((book) => {
+          books[book.id] = book;
+        });
         return Object.assign({}, state, {
-          isFetching: false,
-          items: action.posts
-        })
+          isFetching: false
+        },
+        books  
+      )
       default:
         return state
     }

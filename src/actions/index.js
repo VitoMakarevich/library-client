@@ -1,2 +1,6 @@
 import * as BookActions from './books';
-export {BookActions};
+import * as UserActions from './users';
+export {
+    BookActions,
+    UserActions,
+};

@@ -3,18 +3,20 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 import reducers from './reducers'
 import thunkMiddleware from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import {BookActions} from './actions'
+import {BookActions, UserActions} from './actions'
 
 const store = createStore(
   reducers,
-  applyMiddleware(thunkMiddleware)
-)
+  composeWithDevTools(
+    applyMiddleware(thunkMiddleware),
+    // other store enhancers if any
+));
 
 
 ReactDOM.render(
@@ -25,7 +27,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-store.dispatch(BookActions.fetchBooks({})).then((res) => console.log(res));
 
 registerServiceWorker();
