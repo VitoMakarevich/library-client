@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router'
+import {withRouter, Link} from 'react-router-dom'
 import { bindActionCreators} from 'redux'
 import UsersTable from '../components/usersTable';
 import {UserActions} from '../actions';
 import {UserRequestActions} from '../actions/requests';
+import '../styles/users.scss'
 
 class UsersContainer extends React.Component {
     componentWillMount() {
@@ -38,21 +39,25 @@ class UsersContainer extends React.Component {
     }
 
     handleUserSelect(state, rowInfo) {
-        console.log(rowInfo)
         return {
-          onClick: ()=> this.props.history.push(`${rowInfo.original.id}`)
+          onClick: ()=> this.props.history.push(`/users/${rowInfo.original.id}`)
         }
       }
 
     render() {
         return (
-            <UsersTable users={this.props.users}
-                numItems= {this.props.numItems}
-                isFetching = {this.props.isFetching}
-                handleSortChange = {this.handleSortChange = this.handleSortChange.bind(this)}
-                handleFilterChange = {this.handleFilterChange = this.handleFilterChange.bind(this)}
-                handlePaginationChange = {this.handlePaginationChange = this.handlePaginationChange.bind(this)}
-                handleUserSelect = {this.handleUserSelect = this.handleUserSelect.bind(this)}/>
+            <div className="usersPage">
+                <Link className="usersPage__link" to='users/create'>
+                    +
+                </Link>
+                <UsersTable users={this.props.users}
+                    numItems= {this.props.numItems}
+                    isFetching = {this.props.isFetching}
+                    handleSortChange = {this.handleSortChange = this.handleSortChange.bind(this)}
+                    handleFilterChange = {this.handleFilterChange = this.handleFilterChange.bind(this)}
+                    handlePaginationChange = {this.handlePaginationChange = this.handlePaginationChange.bind(this)}
+                    handleUserSelect = {this.handleUserSelect = this.handleUserSelect.bind(this)}/>
+            </div>
         )
     }
 }

@@ -10,14 +10,9 @@ function books(state = {
           isFetching: true,
         })
       case BookActions.RECEIVE_BOOKS:
-        const books = {};
-        action.books.forEach((book) => {
-          books[book.id] = book;
-        });
         return Object.assign({}, state, {
           isFetching: false
-        },
-        books  
+        }
       )
       default:
         return state

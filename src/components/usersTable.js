@@ -8,7 +8,7 @@ const calculatePagesCount = (items, pageSize) => {
     return items / pageSize;
   }
   else {
-    return parseInt(items / pageSize) + 1;
+    return parseInt(items / pageSize, 10) + 1;
   }
 }
 

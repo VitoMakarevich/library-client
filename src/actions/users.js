@@ -59,3 +59,69 @@ export function changeUsersRequestAndFetch(request) {
     dispatch(fetchUsers())
   }
 }
+
+export function fetchUser(id){
+  return async function(dispatch) {
+    dispatch(requestUsers());
+    const result = await axios.get(`http://localhost:30300/users/${id}`)
+    return dispatch(receiveUser(result.data));
+  }
+}
+
+export const DELETE_USER_BY_ID = 'DELETE_USER_BY_ID';
+export function deleteUserById(id){
+  return async function(dispatch) {
+    dispatch(requestUsers());
+    const result = await axios.delete(`http://localhost:30300/users/${id}`)
+    dispatch(fetchUsers({}))
+    return dispatch(deleteUser(result.data.id));
+  }
+}
+
+export const DELETE_USER = 'DELETE_USER'
+export function deleteUser(id) {
+  return {
+    type: DELETE_USER,
+    id: id
+  }
+}
+
+export const UPDATE_USER_BY_ID = 'UPDATE_USER_BY_ID';
+export function updateUserById(id, request){
+  return async function(dispatch) {
+    dispatch(requestUsers());
+    const result = await axios.put(`http://localhost:30300/users/${id}`, request)
+    dispatch(fetchUsers({}))
+    return dispatch(updateUser(result.data.id, result.data));
+  }
+}
+
+export const CREATE_USER = 'CREATE_USER';
+export function createUser(request){
+  return async function(dispatch) {
+    dispatch(requestUsers());
+    const result = await axios.post(`http://localhost:30300/users/`, request)
+    dispatch(fetchUsers({}))
+    return dispatch(updateUser(result.data.id, result.data));
+  }
+}
+
+export const UPDATE_USER = 'UPDATE_USER'
+export function updateUser(id, data) {
+  return {
+    type: UPDATE_USER,
+    id: id,
+    data: data
+  }
+}
+
+
+
+
+export const RECEIVE_USER = 'RECEIVE_USER'
+export function receiveUser(user) {
+  return {
+    type: RECEIVE_USER,
+    user: user
+  }
+}
