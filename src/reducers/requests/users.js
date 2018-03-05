@@ -12,6 +12,8 @@ function users(state = {
         return Object.assign({}, state, {pagination:  action.pagination})
       case UserRequestActions.ADD_USERS_SORTER:
         return Object.assign({}, state, {sorter: action.sorter});
+      case UserRequestActions.RESET_USERS_REQUEST:
+        return {};
       default:
         return state
     }

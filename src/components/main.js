@@ -9,11 +9,14 @@ import BooksButton from './booksButton';
 import Books from './books';
 import Bindings from './bindings';
 import Users from '../containers/users';
-import Authors from './authors';
+import Authors from '../containers/authors';
 import NoMatch from './noMatch';
 import User from '../containers/user';
 import Home from './home';
 import UserCreate from '../containers/userCreate';
+import AuthorCreate from '../containers/authorCreate';
+import Author from '../containers/author';
+
 
 const Main = () => (
     <section>
@@ -30,8 +33,9 @@ const Main = () => (
             <Route exact path="/users/create" component={UserCreate} />
             <Route exact path="/users" component={Users}/>
             <Route path="/users/:id" component={User} />
-            
-            <Route path="/books" component={Books}/>
+            <Route exact path="/authors/create" component={AuthorCreate} />
+            <Route exact path="/authors" component={Authors}/>
+            <Route path="/authors/:id" component={Author} />
             <Route path="/bindings" component={Bindings}/>
             <Route path="/authors" component={Authors}/>
             <Route component={NoMatch}/>

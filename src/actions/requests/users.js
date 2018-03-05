@@ -23,3 +23,10 @@ export function addUsersPagination(pagination) {
         pagination: pagination
     }
 }
+
+export const RESET_USERS_REQUEST = 'RESET_USERS_REQUEST';
+export function resetUsersRequest() {
+    return {
+        type: RESET_USERS_REQUEST
+    }
+}

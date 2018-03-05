@@ -1,50 +1,46 @@
 import React from 'react';
-import UserComponent from '../components/user';
+import AuthorComponent from '../components/author';
 import { bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
-import {UserActions} from '../actions';
+import {AuthorActions} from '../actions';
 import Loading from '../components/loading';
 import NoMatch from '../components/noMatch';
 
 let id;
 
-class User extends React.Component {
+class Author extends React.Component {
 
     constructor() {
         super();
         this.state = {
             firstName: null,
-            lastName: null,
-            passportNumber: null,
-            email: null
+            lastName: null
         }
     }
 
     componentWillMount(){
         id = this.props.match.params.id;
-        this.props.userActions.fetchUser(id);
+        this.props.authorActions.fetchAuthor(id);
     }
 
     componentWillReceiveProps(newProps){
-        if(newProps.user){
+        if(newProps.author){
             this.setState({
-                firstName: newProps.user.firstName,
-                lastName: newProps.user.lastName,
-                email: newProps.user.email,
-                passportNumber: newProps.user.passportNumber
+                firstName: newProps.author.firstName,
+                lastName: newProps.author.lastName
             })
         }
     }
 
     handleDelete() {
-        this.props.userActions.deleteUserById(id);
-        this.props.history.push(`/users`)
+        this.props.authorActions.deleteAuthorById(id);
+        this.props.history.push(`/authors`)
     }
 
     handleUpdate(e) {
         e.preventDefault();
-        this.props.userActions.updateUserById(id, this.state);
+        this.props.authorActions.updateAuthorById(id, this.state);
     }
 
     handleFirstNameChange(e) {
@@ -63,39 +59,21 @@ class User extends React.Component {
         )
     }
 
-    handleEmailChange(e) {
-        this.setState(
-            Object.assign({}, this.state, {
-                email: e.target.value
-            })
-        )
-    }
-
-    handlePassportNumberChange(e) {
-        this.setState(
-            Object.assign({}, this.state, {
-                passportNumber: e.target.value
-            })
-        )
-    }
-
     render() {
         console.log(this.state)
         if(this.props.isFetching){
             return <Loading /> 
         }
-        else if(!this.props.user)
+        else if(!this.props.author)
             return <NoMatch />
         else {
             
             return (
-                <UserComponent user={this.props.user}
+                <AuthorComponent author={this.props.author}
                     handleUpdate = {this.handleUpdate = this.handleUpdate.bind(this)}
                     handleDelete = {this.handleDelete = this.handleDelete.bind(this)}
                     handleFirstNameChange = {this.handleFirstNameChange = this.handleFirstNameChange.bind(this)}
                     handleLastNameChange = {this.handleLastNameChange = this.handleLastNameChange.bind(this)}
-                    handlePassportNumberChange = {this.handlePassportNumberChange = this.handlePassportNumberChange.bind(this)}
-                    handleEmailChange = {this.handleEmailChange = this.handleEmailChange.bind(this)}
                 />
             );
         }
@@ -104,14 +82,14 @@ class User extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isFetching: state.users.isFetching,
-        user: state.users.byId[Number(id)]
+        isFetching: state.authors.isFetching,
+        author: state.authors.byId[Number(id)]
     }
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        userActions: bindActionCreators(UserActions, dispatch)
+        authorActions: bindActionCreators(AuthorActions, dispatch)
     }
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(User));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Author));

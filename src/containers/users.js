@@ -9,6 +9,8 @@ import '../styles/users.scss'
 
 class UsersContainer extends React.Component {
     componentWillMount() {
+        console.log(this.props)
+        this.props.userRequestActions.resetUsersRequest();
         this.props.userActions.fetchUsers({});
     }
 

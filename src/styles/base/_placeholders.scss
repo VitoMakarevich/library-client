@@ -7,10 +7,15 @@
    
     &:hover {
         background: $light-blue;
+        
     }
 }
 
 %menu-link {
     text-decoration: none;
-    color: $white; 
+    color: $white;
+    &:hover{
+        text-decoration: none;
+        color: $white;
+    }
 }

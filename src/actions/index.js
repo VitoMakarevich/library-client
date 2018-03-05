@@ -1,6 +1,8 @@
-import * as BookActions from './books';
+import * as AuthorActions from './authors';
 import * as UserActions from './users';
+import * as BookActions from './users';
 export {
-    BookActions,
+    AuthorActions,
     UserActions,
+    BookActions
 };

@@ -1,0 +1,21 @@
+@import './base/_colors.scss';
+
+.authorsPage {
+    display: flex;
+    justify-content: center;
+    &__link {
+        width: 2rem;
+        height: 2rem;
+        background: $light-blue;
+        color: $white;
+        text-align: center;
+        line-height: 2rem;
+        font-size: 3rem;
+        text-decoration: none;
+    }
+    &__link:hover {
+        text-decoration: none;
+        color: $white;
+        background: $dark-blue
+    }
+}
