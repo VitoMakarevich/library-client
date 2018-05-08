@@ -6,8 +6,12 @@ import UsersButton from './usersButton';
 import BindingsButton from './bindingsButton';
 import AuthorsButton from './authorsButton';
 import BooksButton from './booksButton';
-import Books from './books';
-import Bindings from './bindings';
+import Books from '../containers/books';
+import BookCreate from '../containers/bookCreate';
+import Book from '../containers/book';
+import Bindings from '../containers/bindings';
+import BindingCreate from '../containers/bindingCreate';
+import Binding from '../containers/binding'
 import Users from '../containers/users';
 import Authors from '../containers/authors';
 import NoMatch from './noMatch';
@@ -20,14 +24,14 @@ import Author from '../containers/author';
 
 const Main = () => (
     <section>
-        <div className="selector__wrapper">
+        {/* <div className="selector__wrapper">
             <ul className="selector__menu">
                 <UsersButton />
                 <BooksButton />
                 <AuthorsButton />
                 <BindingsButton />
             </ul> 
-        </div>
+        </div> */}
         <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/users/create" component={UserCreate} />
@@ -36,8 +40,12 @@ const Main = () => (
             <Route exact path="/authors/create" component={AuthorCreate} />
             <Route exact path="/authors" component={Authors}/>
             <Route path="/authors/:id" component={Author} />
-            <Route path="/bindings" component={Bindings}/>
-            <Route path="/authors" component={Authors}/>
+            <Route exact path="/books/create" component={BookCreate} />
+            <Route path="/books/:id" component={Book} />
+            <Route exact path="/books" component={Books} /> 
+            <Route exact path="/bindings/create" component={BindingCreate} />
+            <Route path="/bindings/:id" component={Binding} />
+            <Route exact path="/bindings" component={Bindings} /> 
             <Route component={NoMatch}/>
         </Switch>
     </section>

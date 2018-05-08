@@ -1,0 +1,15 @@
+.book {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__form {
+        border: .2rem solid blue;
+        border-radius: 2rem;
+        padding: 2rem;
+        width: 50%;
+    }
+    &__createButton {
+        display: flex;
+        justify-content: center;
+    }
+}

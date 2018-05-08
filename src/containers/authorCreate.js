@@ -19,7 +19,6 @@ class AuthorCreate extends React.Component {
 
     handleCreate(e){
         e.preventDefault();
-        console.log(this.props)
         this.props.authorActions.createAuthor(this.state);
         this.props.history.push(`/authors`);
     }

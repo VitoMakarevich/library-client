@@ -3,14 +3,48 @@
 .header {
     background: $blue;
     margin: 0;
-    padding: 2rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
     &__text {
         line-height: 2rem;
         margin: 0;
+        display: inline-block;
         text-align: center;
     }
     &__link {
         text-decoration: none;
         color: #fff;
+        transition: color .3s ease;
     }
+    &__link:hover {
+        text-decoration: none;
+        color: $gray;
+    }
+    &__icon {
+        margin-right: .5rem;
+    }
+
+    &__menu {
+        display: block;
+        margin: 0;
+    }
+
+    &__menu-item {
+        display: inline;
+        margin-right: .5rem;
+        line-height: 3rem;
+    }
+
+    &__menu-link {
+        color: $white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: color .3s ease;
+        &:hover {
+            text-decoration: none;
+            color: $gray;
+        }
+    }
+    
 }

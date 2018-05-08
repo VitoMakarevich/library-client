@@ -65,9 +65,12 @@ class UsersContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { users: state.users.items,
-             isFetching: state.users.isFetching,
-             numItems: state.users.numItems}
+    return { users: state.users.items.map((user) => {
+                user.createdAt = new Date(user.createdAt).toLocaleString();
+                return user;
+            }),
+            isFetching: state.users.isFetching,
+            numItems: state.users.numItems}
 }
 
 function mapDispatchToProps(dispatch) {

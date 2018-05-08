@@ -10,7 +10,7 @@ const Author = ({author, handleUpdate, handleDelete, handleFirstNameChange, hand
                 <label htmlFor="lastNameAuthor">Last name</label>
                 <input required className="form-control" id="lastNameAuthor" onChange={handleLastNameChange} defaultValue={author.lastName}/>
                 <label htmlFor="createdAtAuthor" className="col-form-label">Created at</label>
-                <input type="text" readOnly className="form-control-plaintext" id="createdAtAuthor" value={author.createdAt}/>
+                <input type="text" readOnly className="form-control-plaintext" id="createdAtAuthor" value={new Date(author.createdAt).toLocaleString()}/>
             </div>
             <div className="author__buttons"> 
                 <button type="submit" className="btn btn-primary">Update</button>

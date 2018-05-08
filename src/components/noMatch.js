@@ -1,9 +1,12 @@
 import React from 'react';
+import '../styles/noMatch.scss';
 
 class NoMatch extends React.Component {
     render() {
         return (
-            <p> no match </p>
+            <div className="noMatch" >
+                <p> Not found in our library</p>
+            </div>
         )
     }
 }

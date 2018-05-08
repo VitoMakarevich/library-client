@@ -1,0 +1,21 @@
+@import './base/_placeholders.scss';
+@import './base/_colors.scss';
+
+.binding {
+    display: flex;
+    justify-content: center;
+    &__inner {
+        border: .2rem solid blue;
+        border-radius: 2rem;
+        padding: 2rem;
+        width: 50%;
+    }
+    &__buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.btn {
+    width: 30%;
+}

@@ -9,6 +9,7 @@ import '../styles/authors.scss'
 
 class AuthorsContainer extends React.Component {
     componentWillMount() {
+        this.props.authorRequestActions.resetAuthorsRequest();
         this.props.authorActions.fetchAuthors({});
     }
 
@@ -63,9 +64,12 @@ class AuthorsContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { authors: state.authors.items,
-             isFetching: state.authors.isFetching,
-             numItems: state.authors.numItems}
+    return { authors: state.authors.items.map((author) => {
+                author.createdAt = new Date(author.createdAt).toLocaleString();
+                return author;
+            }),
+            isFetching: state.authors.isFetching,
+            numItems: state.authors.numItems}
 }
 
 function mapDispatchToProps(dispatch) {

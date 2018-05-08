@@ -1,0 +1,22 @@
+.binding {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__form {
+        label {
+            margin: {
+                top: .5rem;
+                bottom: .5rem;
+            }
+        }
+        border: .2rem solid blue;
+        border-radius: 2rem;
+        padding: 2rem;
+
+        width: 50%;
+    }
+    &__createButton {
+        display: flex;
+        justify-content: center;
+    }
+}

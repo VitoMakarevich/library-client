@@ -6,9 +6,15 @@ const Header = () => (
     <header className="header">
         <h1 className="header__text">
             <Link to="/" className="header__link">
-                Library
+                <i className="header__icon fas fa-book"></i>
             </Link> 
         </h1>
+        <ul className="header__menu">
+            <li className="header__menu-item"> <Link className="header__menu-link"  to='/authors'> Authors </Link> </li>
+            <li className="header__menu-item"> <Link className="header__menu-link" to='/books'> Books </Link> </li>
+            <li className="header__menu-item"> <Link className="header__menu-link" to='/users'> Users </Link> </li>
+            <li className="header__menu-item"> <Link className="header__menu-link" to='/bindings'> Bindings </Link> </li>
+        </ul>
     </header>
 )
 
